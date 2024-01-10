@@ -1,0 +1,1 @@
+(()=>{let e=document.createElement("div").classList.add("zurio-sam");console.log(e)})();
