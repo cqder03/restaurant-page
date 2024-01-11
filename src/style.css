@@ -1,11 +1,165 @@
 @font-face {
-    font-family: 'poppins';
-    src: url(assets/fonts/Poppins-Regular.ttf) format('ttf');
+    font-family: 'nixie-one';
+    src: url(assets/fonts/NixieOne-Regular.ttf) format('ttf');
+}
+
+html {
+    background-color: gray;
+    font-family: 'nixie-one';
+    background: url('assets/pexels-alan-kabeš-17095230.jpg');
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: gray;
+    color: rgb(206, 204, 201);
+}
+
+
+/* Header */
+header {
+    height: 10vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    line-height: 10vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+header > h1 {
+    display: inline;
+    font-size: 2rem;
+    padding: 0 1rem;
+}
+
+header > ul {
+    display: inline-flex;
+    /* justify-content: flex-end; */
+    gap: 1.5rem;
+    padding-right: 1rem;
+    font-size: 1.5rem;
+}
+
+li {
+    list-style-type: none;
+    cursor: default;
+    text-transform: uppercase;
+    font-weight: bold;
+    height: 30%;
+    position: relative;
+    top: -0.25rem;
+    transition: transform 0.3s;
+}
+
+li:hover,
+li.active {
+    color: white;
+}
+
+li.active {
+    border-bottom: 2px solid white;
+}
+
+li:hover {
+    transform: translateY(-10%);
+}
+
+
+/* Home */
+
+#home-container {
+    position: absolute;
+    top: 20%;
+    left: 30vw;
+    height: 60vh;
+    width: 40vw;
+    background-color: rgba(0, 0, 0, 0.9);
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 10px;
+}
+
+#home-container > h2 {
+    padding-top: 5vh;
+}
+
+#home-item-holder {
+    width: 90%;
+    height: 40%;
+    margin: 2vh auto 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.item {
+    margin-top: 2vh;
+    border: 2px solid white;
+    position: relative;
+    aspect-ratio: 1 / 1;
+}
+
+.item img {
+    width: 80%;
+    height: 80%;
+    position: relative;
+    top: 25.7px;
+}
+
+.overlay {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(5px);
+    transition: all 0.5s;
+}
+
+.item,
+.overlay {
+    border-radius: 10px;
+}
+
+.item:hover .overlay {
+    opacity: 1;
+  }
+
+.overlay {
+    padding-top: 2rem;
+}
+
+.overlay > .hidden-text {
+    padding: 0.3rem 0 0.7rem ;
+}
+
+
+.overlay-btn {
+    padding: 0.2rem 1rem;
+    width: 50%;
+    margin: 0 auto;
+    border: 1px solid black;
+    background-color: transparent;
+}
+
+.overlay-btn:active {
+    background-color: black;
+}
+
+.see-more {
+    margin-top: 3rem;
+    border: none;
+    padding: 1rem 2rem;
+    background: lightskyblue;
+    color: black;
+    border-radius: 5px;
+    align-self: center;
+}
+
+.see-more:active {
+    transform: scale(0.9);
 }
