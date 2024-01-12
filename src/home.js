@@ -99,3 +99,4 @@ function postHome() {
     }
 }
 
+export default  postHome

@@ -1,4 +1,6 @@
-
+import postHome from '../src/home';
+import postMenu from '../src/menu';
+import postAbout from '../src/about';
 
 const postHeader = (function() {
     const head = document.createElement('header');
@@ -16,6 +18,8 @@ const postHeader = (function() {
     li2.setAttribute('id', 'menu');
     li3.setAttribute('id', 'about');
 
+    // [li1, li2, li3].forEach((item) => item.classList.add('header-link'));
+
     document.querySelector('#content').appendChild(head);
     head.appendChild(h1);
     head.appendChild(ul)
@@ -30,15 +34,30 @@ function setActive(set) {
     
     
     if (set === 'home') {
+        if(document.querySelector('#menu').getAttribute('class') === 'active') {
+            document.querySelector("#content").removeChild(document.querySelector("#menu-container"));
+        } 
+        if (document.querySelector('#about').getAttribute('class') === 'active') {
+            document.querySelector('#content').removeChild(document.querySelector('#about-container'));
+        }
         postHome();
+        document.querySelector('.see-more').addEventListener('click', () => setActive('menu'))
     } else if (set === 'menu') {
         if(document.querySelector('#home').getAttribute('class') === 'active') {
             document.querySelector("#content").removeChild(document.querySelector("#home-container"));
         }
+        if (document.querySelector('#about').getAttribute('class') === 'active') {
+            document.querySelector('#content').removeChild(document.querySelector('#about-container'));
+        }
+        postMenu();
     } else if (set === 'about') {
-        if(document.querySelector('#home').getAttribute('class') === 'active') {
+        if (document.querySelector('#home').getAttribute('class') === 'active') {
             document.querySelector("#content").removeChild(document.querySelector("#home-container"));
         }
+        if (document.querySelector('#menu').getAttribute('class') === 'active') {
+            document.querySelector("#content").removeChild(document.querySelector("#menu-container"));
+        }
+        postAbout();
     }
     
     list.forEach((el) => el.classList.remove('active'));
@@ -56,6 +75,9 @@ document.querySelector('ul').addEventListener('click', (event) => {
             setActive('home');
             break;
         case 'menu':
+            if (document.querySelector('#menu').getAttribute('class') === 'active') {
+                break
+            }
             setActive('menu');
             break;
         case 'about':
@@ -64,3 +86,4 @@ document.querySelector('ul').addEventListener('click', (event) => {
     }
 });
 
+setActive('home');
