@@ -99,4 +99,4 @@ function postHome() {
     }
 }
 
-export default  postHome
+export {postHome}

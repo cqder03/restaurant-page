@@ -58,4 +58,4 @@ function postAbout() {
 
 }
 
-export default postAbout;
+export {postAbout};

@@ -147,4 +147,4 @@ function postMenu() {
     }
 }
 
-export default postMenu
+export {postMenu}
